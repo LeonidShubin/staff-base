@@ -1,0 +1,20 @@
+@import "../../../node_modules/@angular/material/theming";
+@include mat-core();
+
+$light-theme: mat-light-theme(
+    mat-palette($mat-purple, 500),
+    mat-palette($mat-deep-purple, A200),
+    mat-palette($mat-red, A200)
+);
+
+$dark-theme: mat-dark-theme(
+    mat-palette($mat-deep-purple, A100),
+    mat-palette($mat-cyan, A100),
+    mat-palette($mat-red, A100)
+);
+
+@include angular-material-theme($light-theme);
+
+.dark-mode {
+  @include angular-material-theme($dark-theme);
+}
