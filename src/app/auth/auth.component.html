@@ -1,0 +1,38 @@
+<form name="auth">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon aria-hidden="false">emoji_people</mat-icon>
+        Authentication
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Enter your login name</mat-label>
+        <input matInput type="text" placeholder="Login" name="login">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Enter your password</mat-label>
+        <input matInput type="password" placeholder="Password" name="pass">
+      </mat-form-field>
+
+      <br>
+
+      <span class="link">Forgot password?</span>
+
+    </mat-card-content>
+
+    <hr class="card-hr">
+
+    <mat-card-actions align="end">
+      <button mat-button color="primary">Primary</button>
+      <button mat-stroked-button color="accent">Accent</button>
+      <button mat-flat-button color="warn">Warn</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+
+.form-wrapper {
+  padding: 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.form-header {
+  padding: 1rem;
+  margin: -2rem;
+  margin-bottom: 0;
+  border-bottom: 2px solid mat-color($mat-purple, 900);
+
+  & h2 {
+    margin-bottom: 0;
+  }
+}
