@@ -1,3 +1,9 @@
-<div class="viewport flex-center mat-app-background" [class.dark-mode]="isDarkMode">
+<div class="viewport flex-center mat-app-background">
   <router-outlet></router-outlet>
+  <div class="theme-switcher flex-center">
+    <mat-icon [class.muted]="isDarkMode" aria-hidden="false">wb_sunny</mat-icon>
+    <mat-slide-toggle [(ngModel)]="isDarkMode" (change)="switchTheme()">
+    </mat-slide-toggle>
+    <mat-icon [class.muted]="!isDarkMode" aria-hidden="false">bedtime</mat-icon>
+  </div>
 </div>

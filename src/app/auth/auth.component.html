@@ -1,4 +1,4 @@
-<form name="auth">
+<form [formGroup]="auth" (ngSubmit)="onSubmit()">
   <mat-card>
     <mat-card-header>
       <mat-card-title>
@@ -9,30 +9,84 @@
 
     <mat-card-content>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Enter your login name</mat-label>
-        <input matInput type="text" placeholder="Login" name="login">
-      </mat-form-field>
+      <mat-form-field class="mb-10">
+        <mat-label>Enter your email</mat-label>
+        <input matInput type="email" placeholder="Email" formControlName="email">
 
+        <mat-error *ngIf="auth.controls.email.hasError('required') && auth.controls.email.touched">
+          Field is required
+        </mat-error>
+        <mat-error *ngIf="auth.controls.email.hasError('pattern')">
+          Field is not valid
+        </mat-error>
+      </mat-form-field>
       <br>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="mb-10">
         <mat-label>Enter your password</mat-label>
-        <input matInput type="password" placeholder="Password" name="pass">
+        <input matInput [type]="passVisibility ? 'text' : 'password'"
+               formControlName="password"
+               (change)="onSubmit()"
+               placeholder="Password">
+
+        <mat-icon
+          class="cur-pointer"
+          *ngIf="passVisibility"
+          (click)="passVisibility = !passVisibility"
+          matSuffix
+        >visibility_off</mat-icon>
+        <mat-icon
+          class="cur-pointer"
+          *ngIf="!passVisibility"
+          (click)="passVisibility = !passVisibility"
+          matSuffix
+        >visibility</mat-icon>
+
+        <mat-error *ngIf="auth.controls.password.hasError('required') && auth.controls.password.touched">
+          Field is required
+        </mat-error>
+        <mat-error *ngIf="auth.controls.password.hasError('minlength')">
+          The password must contain at least 6 characters
+        </mat-error>
       </mat-form-field>
 
       <br>
 
-      <span class="link">Forgot password?</span>
+      <span class="link" (click)="openDialog()">Forgot password?</span>
 
     </mat-card-content>
 
     <hr class="card-hr">
 
     <mat-card-actions align="end">
-      <button mat-button color="primary">Primary</button>
-      <button mat-stroked-button color="accent">Accent</button>
-      <button mat-flat-button color="warn">Warn</button>
+      <button mat-stroked-button color="accent"
+              [disabled]="!auth.valid"
+              (keyup.enter)="auth.valid ? onSubmit() : null"
+      >Submit</button>
     </mat-card-actions>
   </mat-card>
 </form>
+
+
+<ng-template #dialog>
+    <h3 mat-dialog-title>Enter your email for restore password</h3>
+    <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput type="email" placeholder="Email" [formControl]="restoreEmail">
+
+        <mat-error *ngIf="restoreEmail.hasError('required') && restoreEmail.touched">
+          Field is required
+        </mat-error>
+        <mat-error *ngIf="restoreEmail.hasError('pattern')">
+          Field is not valid
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-stroked-button color="warn" [mat-dialog-close]="">Close</button>
+      <button mat-stroked-button color="accent"
+              [disabled]="!restoreEmail.valid"
+      >Send</button>
+    </div>
+</ng-template>

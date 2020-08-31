@@ -28,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/healpers/style/theme.scss",
+              "src/helpers/style/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -93,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/healpers/style/theme.scss",
+              "src/helpers/style/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []

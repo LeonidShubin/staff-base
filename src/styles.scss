@@ -17,3 +17,23 @@
   margin-left: -16px;
   margin-right: -16px;
 }
+
+.muted {
+  opacity: .5;
+}
+
+.cur-pointer {
+  cursor: pointer;
+}
+
+.link {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
